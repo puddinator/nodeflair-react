@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import "./App.css";
+import Mountain from "./Mountain";
+import Beaches from "./Beaches";
 
 function App() {
+  const [selectedPage, setSelectedPage] = useState("Mountain");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="container">
+      <header>
+        <button
+          onClick={() => {
+            setSelectedPage("Mountain");
+          }}
         >
-          Learn React
-        </a>
+          Mountain
+        </button>
+        <button
+          onClick={() => {
+            setSelectedPage("Beaches");
+          }}
+        >
+          Beaches
+        </button>
       </header>
+      {selectedPage === "Mountain" ? <Mountain /> : null}
+      {selectedPage === "Beaches" ? <Beaches /> : null}
     </div>
   );
 }
